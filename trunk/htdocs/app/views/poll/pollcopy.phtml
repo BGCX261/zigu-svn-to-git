@@ -1,0 +1,87 @@
+<script language="javascript" type="text/javascript" src="./misc/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="./misc/js/zigu.js"></script>
+<script language="javascript" type="text/javascript" src="./misc/js/jquery.datePicker.js"></script>
+<script language="javascript" type="text/javascript" src="./misc/js/date.js"></script>
+<link rel="stylesheet" type="text/css" href="./misc/style/datePicker.css" />
+<div>
+<form action="<?php echo url('poll/copy',array('pollId'=>$this->pollId)); ?>" method="POST">
+<input type="hidden" name="action" value="edit">
+	<dl>
+		<dt>投票</dt>
+		<dd>投票标题：<input type="text" name="pollTitle" value="<?php echo $this->poll->pollTitle; ?>" /></dd>
+		<dd>投票限制 
+			<input type="checkbox" name="limitType[]" value="0" <?php echo $this->limitType[0]; ?> />不限制
+			<input type="checkbox" name="limitType[]" value="1" <?php echo $this->limitType[1]; ?> />IP限制
+			<input type="checkbox" name="limitType[]" value="2" <?php echo $this->limitType[2]; ?> />用户限制
+			<input type="checkbox" name="limitType[]" value="3" <?php echo $this->limitType[3]; ?> />时间限制
+			<input type="checkbox" name="limitType[]" value="4" <?php echo $this->limitType[4]; ?> />等级限制
+			<input type="checkbox" name="limitType[]" value="5" <?php echo $this->limitType[5]; ?> />登陆限制
+			<input type="checkbox" name="limitType[]" value="6" <?php echo $this->limitType[6]; ?> />注册时间限制
+		</dd>
+		<dd>投票状态
+			<select name="pollStatus">
+				<option value="draft" <?php echo $this->statusSelect['draft']; ?>>草稿</option>
+				<option value="online" <?php echo $this->statusSelect['online']; ?>>正式</option>
+				<option value="ing" <?php echo $this->statusSelect['ing']; ?>>进行中</option>
+				<option value="offline" <?php echo $this->statusSelect['offline']; ?>>关闭</option>
+			</select>					
+		</dd>
+		<dd>投票结果是否可见 <input type="checkbox" name="resultVisiable" value="1" <?php echo $this->resultVisiable; ?>/></dd>
+		<dd>投票限制时间：<input type="text" name="freezeTime" value="<?php echo $this->poll->freezeTime; ?>" /></dd>
+		<dd>投票开始时间：<input type="text" name="startTime" value="<?php echo $this->startTime; ?>" class="date-pick" /></dd>
+		<dd>投票结束时间：<input type="text" name="endTime" value="<?php echo $this->endTime; ?>" class="date-pick" /></dd>
+		<dd>结果排序方法：
+			<select name="resultDisplayOrder">
+				<option value="1" <?php echo $this->displayOrderSelect['1']; ?>>按录入顺序排序</option>
+				<option value="2" <?php echo $this->displayOrderSelect['2']; ?>>按票数从高到低</option>
+				<option value="3" <?php echo $this->displayOrderSelect['3']; ?>>按票数从低到高</option>
+			</select>			
+		</dd>
+		<dd>初始投票人数：<input type="text" name="initCount" value="<?php echo $this->poll->initCount; ?>" /></dd>
+		<dd>投票模板 <input type="text" name="template" value="<?php echo $this->poll->template; ?>" /></dd>
+		<dd>定制模板 <input type="text" name="customTemplate" value="<?php echo $this->poll->customTemplate; ?>" /></dd>
+		<dd>定制模板url <input type="text" name="templateUrl" value="<?php echo $this->poll->templateUrl; ?>" /></dd>
+	</dl>
+
+	
+	<div id="questions">
+	<?php echo $this->questions; ?>
+	</div>
+	<input type="button" value="增加问题" id="addQuestion" />
+	<input type="submit" value="复制">
+</form>
+</div>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$("#addQuestion").click(function(){
+		question.getQuestion();
+	});
+	//for(i=0;i<2;i++){
+	//	question.getQuestion();
+	//}
+	//表单验证
+	$("[id^='question_'] select").change(function(){
+		question.getChange(this,this.id.split('_')[1]);
+	});
+	
+	$("input[id^='add_']").click(function(){
+		question.getItem(this.id.split('_')[1]);
+	});
+	
+	$("input[id^='del_']").click(function(){
+		question.getDel(this);
+	});
+	
+	$("[id^='advq_']").click(function(){
+		question.questionSetting(this.id.split('_')[1]);
+	}).end();
+	
+	$("[id^='advi_']").click(function(){
+		question.itemSetting(this,this.id.split('_')[1]);
+	}).end();
+	
+	$('.date-pick').datePicker();
+});
+//-->
+</script>

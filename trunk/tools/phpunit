@@ -1,0 +1,3 @@
+#!/usr/bin/php -d safe_mode=Off
+<?php
+require dirname(__FILE__) .DIRECTORY_SEPARATOR .  'ZiguPHPUnitCommond.php';

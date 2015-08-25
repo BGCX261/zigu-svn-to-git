@@ -1,0 +1,55 @@
+<div>搜索投票</div>
+<div>
+<form action="" method="post">
+<input type="hidden" name="action" value="search">
+<input type="text" name="search" id="search">
+<select name="searchType">
+<option value="1">标题</option>
+<option value="2">作者</option>
+</select>
+<input type="submit" value="查询">
+</form>
+</div>
+
+<div id="content" class="container_12">
+<?php if($this->hasPoll){ ?>
+<div>投票列表  <a href="<?php echo url('poll/add',array()); ?>">创建投票</a></div>
+<br>
+<br>
+<table>
+	<tr>
+		<td>标题</td>
+		<td>状态</td>
+		<td>是否可见</td>
+		<td>投票限制时间</td>
+		<td>创建时间</td>
+		<td>创建者</td>
+		<td>修改时间</td>
+		<td>修改者</td>
+		<td>操作</td>
+	</tr>
+
+<?php foreach($this->polls as $poll){ ?>
+	<tr>
+		<td><a href="<?php echo url('poll/show',array('pollId'=>$poll->pollId)); ?>"><?php echo $poll->pollTitle; ?></a></td>
+		<td><?php echo $this->pollStatus[$poll->pollStatus]; ?></td>
+		<td><?php echo $this->resultVisiable[$poll->resultVisiable]; ?></td>
+		<td><?php echo $poll->limitType; ?></td>
+		<td><?php echo date("Y-m-d H:i:s",$poll->createTime); ?></td>
+		<td><?php echo $poll->createUser; ?></td>
+		<td><?php echo date("Y-m-d H:i:s",$poll->updateTime); ?></td>
+		<td><?php echo $poll->updateuser; ?></td>
+		<td>
+			<a href="<?php echo url('poll/copy',array('pollId'=>$poll->pollId)); ?>">复制</a> 
+			<a href="<?php echo url('poll/edit',array('pollId'=>$poll->pollId)); ?>">修改</a> 
+			<a href="<?php echo url('poll/delete',array('pollId'=>$poll->pollId)); ?>">删除</a>
+			<a href="<?php echo url('poll/attend',array('pollId'=>$poll->pollId)); ?>">参加投票</a> 
+			<a href="<?php echo url('poll/result',array('pollId'=>$poll->pollId)); ?>">投票结果</a>
+		</td>
+	</tr>
+<?php } ?>
+</table>
+<?php }else{ ?>
+<div>找不到投票</div>
+<?php } ?>
+</div>

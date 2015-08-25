@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Zigu Poll System</title>
+<link rel="stylesheet" type="text/css" media="all" href="/misc/style/reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/misc/style/text.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/misc/style/960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/misc/style/backend.css" />
+</head>
+<body>
+
+<div id="header" class="container_12">
+  <div id="logo" class="grid_5">
+    <h1>Zigu Poll System</h1>
+  </div>
+  <div id="topmenu" class="grid_7">
+    <p><span>您好, XXX</span> | <a href="/user/logout" title="登出系统">[登出]</a></p>
+  </div>
+
+  <div class="clear"></div>
+
+  <div id="nav">
+    <div class="grid_12">
+      <ul>
+        <li><a href="<?php echo url('poll/add',array()); ?>" title="创建新投票">创建新投票</a></li>
+        <li><a href="<?php echo url('poll/mypoll',array()); ?>" title="我的投票">我的投票</a></li>
+        <li><a href="<?php echo url('poll/search',array()); ?>" title="搜索投票">搜索</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

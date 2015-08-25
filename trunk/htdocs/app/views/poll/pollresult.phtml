@@ -1,0 +1,15 @@
+<dl>
+		<dt>投票结果</dt>
+		<dd>投票标题：<?php echo $this->poll->pollTitle; ?></dd>
+		<dd>投票限制：<?php echo $this->pollLimit[$this->poll->limitType]; ?></dd>
+		<dd>投票限制时间：<?php echo $this->poll->freezeTime; ?></dd>
+		<dd>投票开始时间：<?php echo $this->poll->startTime; ?></dd>
+		<dd>投票结束时间：<?php echo $this->poll->endtime; ?></dd>
+		<dd>结果排序方法：<?php echo $this->resultDisplayOrder[$this->poll->resultDisplayOrder]; ?></dd>
+		<dd>初始投票人数：<?php echo $this->poll->initCount; ?></dd>
+		<dd>投票模板 <?php echo $this->poll->template; ?></dd>
+		<dd>定制模板 <?php echo $this->poll->customTemplate; ?></dd>
+		<dd>定制模板url <?php echo $this->poll->templateUrl; ?></dd>
+	</dl>
+
+	<?php echo $this->resultHtml; ?>

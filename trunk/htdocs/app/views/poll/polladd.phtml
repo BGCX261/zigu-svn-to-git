@@ -1,0 +1,84 @@
+<script language="javascript" type="text/javascript" src="./misc/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="./misc/js/zigu.js"></script>
+<script language="javascript" type="text/javascript" src="./misc/js/jquery.datePicker.js"></script>
+<script language="javascript" type="text/javascript" src="./misc/js/date.js"></script>
+<link rel="stylesheet" type="text/css" href="./misc/style/datePicker.css" />
+<div class="pcontent">
+	<form action="" method="POST" id="addform">
+	<input type="hidden" name="action" value="addpoll" />
+		<div>
+			<div>
+				<dl>
+					<dt>投票</dt>
+					<dd>投票标题 <input type="text" name="pollTitle" value="test_xxx" /></dd>
+					<dd>投票限制 
+					<input type="checkbox" name="limitType[]" value="0" />不限制
+					<input type="checkbox" name="limitType[]" value="1" />IP限制
+					<input type="checkbox" name="limitType[]" value="2" />用户限制
+					<input type="checkbox" name="limitType[]" value="3" />时间限制
+					<input type="checkbox" name="limitType[]" value="4" />等级限制
+					<input type="checkbox" name="limitType[]" value="5" />登陆限制
+					<input type="checkbox" name="limitType[]" value="6" />注册时间限制
+					</dd>
+					<dd>投票状态
+						<select name="pollStatus">
+							<option value="draft">草稿</option>
+							<option value="online">正式</option>
+							<option value="ing">进行中</option>
+							<option value="offline">关闭</option>
+						</select>					
+					</dd>
+					<dd>投票结果是否可见 <input type="radio" name="resultVisiable" value="1" />是<input type="radio" name="resultVisiable" value="0" checked />否</dd>
+					<dd>投票限制时间 <input type="text" name="freezeTime" value="10" /></dd>
+					<dd>投票开始时间 <input type="text" name="startTime" value="<?php echo $this->currentDate; ?>" class="date-pick" /></dd>
+					<dd>投票结束时间 <input type="text" name="endTime" value="<?php echo $this->currentDate; ?>" class="date-pick" /></dd>
+					<dd>结果排序方法 
+						<select name="resultDisplayOrder">
+							<option value="1">按录入顺序排序</option>
+							<option value="2" selected>按票数从高到低</option>
+							<option value="3">按票数从低到高</option>
+						</select>	
+					</dd>
+					<dd>初始投票人数 <input type="text" name="initCount" value="1000" /></dd>
+					<dd>投票模板 
+						<select name="template">
+							<option value="1" selected>模板一</option>
+							<option value="2">模板二</option>
+							<option value="3">模板三</option>
+						</select>
+					</dd>
+					<dd>定制模板 <input type="text" name="customTemplate" value="http://www.19lou.com" />定制模板url <input type="text" name="templateUrl" value="http://" /></dd>
+				</dl>
+			</div>
+			<div>每新增一个问题，请填写完整，否则不能正确提交</div>
+			<div id="questions"></div>
+			<hr>
+			<input type="button" value="增加问题" id="addQuestion" />
+		</div>
+		
+		<div style="text-align:right;"><input type="submit" value="提交" name="psubmit" /></div>
+	</form>
+</div>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$("#addform").each(function(){
+		this.reset();//刷新重置
+	});
+	$("#addQuestion").click(function(){
+		question.getQuestion();
+	});
+	for(i=0;i<1;i++){
+		question.getQuestion();
+	}
+	//日历
+	$('.date-pick').datePicker();
+});
+
+
+
+
+
+//-->
+</script>

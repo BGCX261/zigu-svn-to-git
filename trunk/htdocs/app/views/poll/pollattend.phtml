@@ -1,0 +1,30 @@
+<script language="javascript" type="text/javascript" src="./misc/js/jquery.js"></script>
+<div>
+<form action="<?php echo url('poll/attend',array('pollId'=>$this->poll->pollId));?>" method="POST">
+<input type="hidden" name="action" value="vote">
+	<dl>
+		<dt>投票</dt>
+		<dd>投票标题：<?php echo $this->poll->pollTitle; ?></dd>
+		<dd>投票限制：<?php echo $this->pollLimit[$this->poll->limitType]; ?></dd>
+		<dd>投票限制时间：<?php echo $this->poll->freezeTime; ?></dd>
+		<dd>投票开始时间：<?php echo date("Y-m-d",$this->poll->startTime); ?></dd>
+		<dd>投票结束时间：<?php echo date("Y-m-d",$this->poll->endTime); ?></dd>
+		<dd>结果排序方法：<?php echo $this->resultDisplayOrder[$this->poll->resultDisplayOrder]; ?></dd>
+		<dd>初始投票人数：<?php echo $this->poll->initCount; ?></dd>
+		<dd>投票模板 <?php echo $this->poll->template; ?></dd>
+		<dd>定制模板 <?php echo $this->poll->customTemplate; ?></dd>
+		<dd>定制模板url <?php echo $this->poll->templateUrl; ?></dd>
+	</dl>
+
+	<?php echo $this->questions; ?>
+	<input type="submit" value="投票">
+</form>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+
+
+
+</script>

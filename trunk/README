@@ -1,0 +1,9 @@
+
+
+* PHPUnit环境的建立
+  1. sudo apt-get install php-pear
+  2. sudo pear channel-discover pear.phpunit.de
+  3. suod pear install phpunit/PHPUnit
+  4. sudo vim /etc/php5/cli/php.ini # 修改include_path, 加入"/usr/share/php"路径
+  5. cd {zigu project directory}
+  6. tools/phpunit AllTests tests/AllTests.php
